@@ -1,0 +1,42 @@
+// Installer resources: icon, the thumbnail DLL, the logo for the wizard, version info and the
+// manifest (common controls v6, no elevation, DPI aware).
+#include <windows.h>
+
+#ifdef ZMSVIEWER_PROVIDER
+#define PRODUCT_FILE_TYPE VFT_DLL
+#define PRODUCT_FILE_NAME "ZMSviewer.dll"
+#define PRODUCT_FILE_DESCRIPTION "ZMSviewer Thumbnail Provider"
+#else
+#define PRODUCT_FILE_TYPE VFT_APP
+#define PRODUCT_FILE_NAME "ZMSviewer-Setup.exe"
+#define PRODUCT_FILE_DESCRIPTION "ZMSviewer Setup"
+1 ICON "Setup.ico"
+1 RCDATA "..\\bin\\ZMSviewer.dll"
+2 RCDATA "logo.png"
+3 RCDATA "..\\THIRD_PARTY.txt"
+CREATEPROCESS_MANIFEST_RESOURCE_ID RT_MANIFEST "Setup.manifest"
+#endif
+
+VS_VERSION_INFO VERSIONINFO
+FILEVERSION 1,1,0,0
+PRODUCTVERSION 1,1,0,0
+FILEOS VOS_NT_WINDOWS32
+FILETYPE PRODUCT_FILE_TYPE
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904B0"
+        BEGIN
+            VALUE "CompanyName", "ZMS"
+            VALUE "FileDescription", PRODUCT_FILE_DESCRIPTION
+            VALUE "FileVersion", "1.1.0"
+            VALUE "ProductName", "ZMSviewer"
+            VALUE "ProductVersion", "1.1.0"
+            VALUE "OriginalFilename", PRODUCT_FILE_NAME
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END

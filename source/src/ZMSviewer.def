@@ -1,0 +1,4 @@
+LIBRARY ZMSviewer
+EXPORTS
+    DllGetClassObject PRIVATE
+    DllCanUnloadNow PRIVATE
